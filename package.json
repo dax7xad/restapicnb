@@ -1,7 +1,7 @@
 {
-  "name": "apiwhatsapp",
+  "name": "apirestbca",
   "version": "1.0.0",
-  "description": "Api Rest de Whatsapp y Firebase",
+  "description": "Api Rest para obtener el tipo de cambio",
   "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
@@ -34,6 +34,7 @@
     "jsonwebtoken": "^8.5.1",
     "rxjs": "^7.3.0",
     "spinnies": "^0.5.1",
+    "ssl-root-cas": "^1.3.1",
     "types-axios": "^0.0.8",
     "uniqid": "^5.4.0"
   }

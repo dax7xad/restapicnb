@@ -1,12 +1,12 @@
-<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:ndf="https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <ndf:LatLonListZipCode soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <zipCodeList xsi:type="dwml:zipCodeListType"
-                xmlns:dwml="https://graphical.weather.gov/xml/DWMLgen/schema/DWML.xsd">75001</zipCodeList>
-        </ndf:LatLonListZipCode>
-    </soapenv:Body>
-</soapenv:Envelope>
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <RecuperaTC_Dia xmlns="http://servicios.bcn.gob.ni/">
+            <Ano>2022</Ano>
+            <Mes>4</Mes>
+            <Dia>10</Dia>
+        </RecuperaTC_Dia>
+    </soap:Body>
+</soap:Envelope>
