@@ -2,8 +2,6 @@
 import { Router, Request, Response } from 'express';
 import { fnGetTCByDay } from '../utils/RecuperaTC_Dia';
 
-
-
 const router = Router();
 
 router.get('/' , async (req: Request, res:Response) =>{

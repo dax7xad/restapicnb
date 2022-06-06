@@ -18,7 +18,6 @@ const server = Server.init();
 // Rutas
 server.app.use( '/', routerApp );
 
-
 // Inicializando el servidor
 server.start( async () => {
 
