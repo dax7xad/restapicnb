@@ -2,10 +2,10 @@
 import colors from 'colors';
 import Server from './server/server';
 const soapRequest = require('easy-soap-request');
+import {xmlRecuTCDia } from './utils/RecuperaTC_Dia';
 const fs = require('fs');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0" //this is insecure 
-const xml = fs.readFileSync('zip-code-envelope.xml', 'utf-8');
 // example data
 const url = 'https://servicios.bcn.gob.ni/Tc_Servicio/ServicioTC.asmx?WSDL';
 const sampleHeaders = {
@@ -20,7 +20,8 @@ import routerApp from './routes/app';
 const server = Server.init();
 // usage of module
 const fnTipoCambio = async () => {
-  const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml: xml, timeout: 1000 }); // Optional timeout parameter(milliseconds)
+  const xml = xmlRecuTCDia(2022,1,6);
+  const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml, timeout: 1000 }); // Optional timeout parameter(milliseconds)
   const { headers, body, statusCode } = response;
   console.log(headers);
   console.log(body);
@@ -29,13 +30,13 @@ const fnTipoCambio = async () => {
 // Rutas
 server.app.use( '/', routerApp );
 
+
 // Inicializando el servidor
-server.start( () => {
+server.start( async () => {
+
     console.log('Express Server state:'+ colors.green(' ====> OK') )
     console.log('Express Server port: '+ colors.green(` ====> OK ${server.port.toString()}`));
-
+  await fnTipoCambio();
   });
-
-
 
 
