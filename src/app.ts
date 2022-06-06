@@ -16,7 +16,7 @@ const server = Server.init();
 // usage of module
 
 // Rutas
-server.app.use( '/', routerApp );
+server.app.use( '/api', routerApp );
 
 // Inicializando el servidor
 server.start( async () => {
