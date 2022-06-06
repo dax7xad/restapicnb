@@ -6,11 +6,11 @@ const router = Router();
 
 router.get('/' , async (req: Request, res:Response) =>{
 
-    const result = await fnGetTCByDay();
+    // const result = await fnGetTCByDay();
 
     return res.status(200).json({
         ok: true,
-        mensaje: result
+        mensaje: 'ok Funciona'
     })
 //    return msg.succes(res, 200, 'Todo salio bien');
 
