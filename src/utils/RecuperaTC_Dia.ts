@@ -26,12 +26,19 @@ const xmlRecuTCDia  = ( anio: Number, mes: Number, dia: Number ): string  => {
 
 const fnGetTCByDay = async () => {
     const xml = xmlRecuTCDia(2022, 1, 6);
-    const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml, timeout: 1000 }); // Optional timeout parameter(milliseconds)
-    const { headers, body, statusCode } = response;
-    console.log(headers);
-    console.log(body);
-    console.log(statusCode);
-    return  (statusCode == 200) ? body : 'Error, no se pudo obtener el tipo de cambio' ;
+    try {
+        const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml, timeout: 1000 }); // Optional timeout parameter(milliseconds)
+        const { headers, body, statusCode } = response;
+        console.log(headers);
+        console.log(body);
+        console.log(statusCode);
+        return (statusCode == 200) ? body : 'Error, no se pudo obtener el tipo de cambio';
+    } catch (error) {
+        console.error(error);
+        return error;
+    }
+
+
 };
 export  {
      xmlRecuTCDia,
