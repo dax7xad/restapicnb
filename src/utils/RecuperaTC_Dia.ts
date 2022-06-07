@@ -1,4 +1,6 @@
 const soapRequest = require('easy-soap-request');
+import { parseString } from "xml2js";
+import { TipoCambioDia } from "../models/TipoCambioDia.interface";
 const url = 'https://servicios.bcn.gob.ni/Tc_Servicio/ServicioTC.asmx?WSDL';
 const sampleHeaders = {
     'user-agent': 'sampleTest',
@@ -24,18 +26,27 @@ const xmlRecuTCDia  = ( anio: Number, mes: Number, dia: Number ): string  => {
     return xml;
 };
 
-const fnGetTCByDay = async () => {
-    const xml = xmlRecuTCDia(2022, 1, 6);
+const fnGetTCByDay = async (year: number,month: number,day: number) : Promise<number> => {
+    const xml = xmlRecuTCDia(year, month, day);
+    let resultXml: number = 0;
     try {
         const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml });
         const { headers, body, statusCode } = response;
         console.log(headers);
         console.log(body);
+
+        // parsing xml data
+        parseString(body, function (err: any, results: TipoCambioDia) {
+            // display the json data
+            resultXml= Number( results["soap:Envelope"]["soap:Body"][0].RecuperaTC_DiaResponse[0].RecuperaTC_DiaResult[0])
+
+        });
+
         console.log(statusCode);
-        return (statusCode == 200) ? body : 'Error, no se pudo obtener el tipo de cambio';
+        return (statusCode == 200) ? resultXml : 0;
     } catch (error) {
         console.error(error);
-        return error;
+        return 0;
     }
 
 
