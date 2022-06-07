@@ -9,7 +9,7 @@ router.get('/' , async (req: Request, res:Response) =>{
 
     return res.status(200).json({
         ok: true,
-        mensaje: 'ok Funciona'
+        mensaje: result
     })
 //    return msg.succes(res, 200, 'Todo salio bien');
 
