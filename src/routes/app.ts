@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/' , async (req: Request, res:Response) =>{
 
-    const result =  fnGetTCByDay();
+    const result =  await fnGetTCByDay();
 
     return res.status(200).json({
         ok: true,
