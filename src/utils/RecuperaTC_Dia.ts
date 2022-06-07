@@ -27,7 +27,7 @@ const xmlRecuTCDia  = ( anio: Number, mes: Number, dia: Number ): string  => {
 const fnGetTCByDay = async () => {
     const xml = xmlRecuTCDia(2022, 1, 6);
     try {
-        const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml, timeout: 1000 }); // Optional timeout parameter(milliseconds)
+        const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml });
         const { headers, body, statusCode } = response;
         console.log(headers);
         console.log(body);
