@@ -1,4 +1,3 @@
-
 import { Router, Request, Response } from 'express';
 import { fnGetTCByDay } from '../utils/RecuperaTC_Dia';
 
