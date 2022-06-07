@@ -5,7 +5,7 @@ import Server from './server/server';
 import {fnGetTCByDay } from './utils/RecuperaTC_Dia';
 
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0" //this is insecure 
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0" //this is insecure 
 // example data
 
 
