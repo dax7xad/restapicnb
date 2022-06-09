@@ -21,10 +21,11 @@ router.get('/getTC', async (req: Request, res: Response) => {
     const month:number = Number(req.query.month)||0;
     const day: number = Number(req.query.day) ||0;
     const result = await fnGetTCByDay(year, month, day);
-
+    const monthString = (month < 10) > ? `0${month}`: month.toString();
+    const dayString = (day < 10) > ? `0${day}` : day.toString();
     return res.status(200).json({
         ok: true,
-        mensaje: result
+        data: { date: `${year}/${monthString}/${dayString}`, exchangeRate: result}
     })
     //    return msg.succes(res, 200, 'Todo salio bien');
 
