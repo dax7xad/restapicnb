@@ -49,7 +49,7 @@ const xmlRecuTCMes = (anio: Number, mes: Number): string => {
 };
 
 const xmlFormater = (anio: Number, mes: Number, dia: Number) : string => {
-    console.log('day =>', dia)
+
     return (dia == 0) ? xmlRecuTCMes(anio,mes): xmlRecuTCDia(anio,mes,dia); 
 }
 
@@ -58,19 +58,12 @@ const fnGetTC = async<T>(year: number,month: number,day: number) : Promise<T|nul
     let jsonResults = null;
     const headersSoap = (day == 0) ? TC_MesHeaders: TC_DiaHeaders
     try {
-
-        console.log(xml);
-        console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=')
         const { response } = await soapRequest({ url: url, headers: headersSoap, xml });
         const { headers, body, statusCode } = response;
-        console.log(headers);
-        console.log(body);
 
         // parsing xml data
         parseString(body, function (err: any, results: T) {
             // display the json data
-            console.log(JSON.stringify(results));
-            // resultXml= Number( results["soap:Envelope"]["soap:Body"][0].RecuperaTC_DiaResponse[0].RecuperaTC_DiaResult[0])
             jsonResults = results;
         });
         return (statusCode == 200) ? jsonResults : null;
