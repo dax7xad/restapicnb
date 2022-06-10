@@ -46,7 +46,7 @@ router.get('/getTCMes', async (req: Request, res: Response) => {
     const dayString = (day < 10) ? `0${day}` : day.toString();
     return res.status(200).json({
         ok: true,
-        data: { date: `${year}-${monthString}}`, exchangesRate: TiposCambios }
+        data: { yearMonth: `${year}-${monthString}}`, exchangesRate: TiposCambios }
     })
 });
 
